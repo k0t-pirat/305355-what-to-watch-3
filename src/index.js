@@ -1,14 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app/app.js';
-
-const film = {
-  title: `My Film`,
-  genre: `comedy`,
-  realeaseDate: 1988
-};
+import {films, featuredFilm} from './mocks/films.js';
 
 ReactDOM.render(
-    <App film = {film} />,
+    <App featuredFilm = {featuredFilm} films = {films} />,
     document.getElementById(`root`)
 );
