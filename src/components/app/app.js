@@ -14,7 +14,10 @@ App.propTypes = {
     genre: PropTypes.string.isRequired,
     realeaseDate: PropTypes.number.isRequired
   }),
-  films: PropTypes.arrayOf(PropTypes.string.isRequired)
+  films: PropTypes.arrayOf(PropTypes.shape({
+    image: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired
+  })),
 };
 
 export default App;
