@@ -3,7 +3,9 @@ import Main from '../main/main.js';
 import PropTypes from 'prop-types';
 
 const App = (props) => {
-  return <Main featuredFilm = {props.featuredFilm} films = {props.films} />;
+  const onMovieCardTitleClick = function () {};
+
+  return <Main featuredFilm = {props.featuredFilm} films = {props.films} onMovieCardTitleClick = {onMovieCardTitleClick}/>;
 };
 
 App.propTypes = {
