@@ -1,12 +1,60 @@
-import React from 'react';
-import Main from '../main/main.js';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import Main from '../main/main.js';
+import FullMovieCard from '../full-movie-card/full-movie-card';
 
-const App = (props) => {
-  const onMovieCardTitleClick = function () {};
+class App extends PureComponent {
 
-  return <Main featuredFilm = {props.featuredFilm} films = {props.films} onMovieCardTitleClick = {onMovieCardTitleClick}/>;
-};
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      activeMovieId: null
+    };
+
+    this._handleMovieCardClick = this._handleMovieCardClick.bind(this);
+  }
+
+  _handleMovieCardClick(id) {
+    console.log(id);
+    this.setState({
+      activeMovieId: id
+    });
+  }
+
+  _renderApp() {
+    const {featuredFilm, films} = this.props;
+    const {activeMovieId} = this.state;
+
+    if (activeMovieId) {
+      return <FullMovieCard featuredFilm = {films.find((film) => film.id === activeMovieId)}/>;
+    }
+    return <Main featuredFilm = {featuredFilm} films = {films} onMovieCardTitleClick = {this._handleMovieCardClick}/>;
+  }
+
+  _renderFullMovieCard() {
+    const {featuredFilm} = this.props;
+
+    return <FullMovieCard featuredFilm = {featuredFilm}/>;
+  }
+
+  render() {
+
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            {this._renderApp()}
+          </Route>
+          <Route exact path="/dev-movie-card">
+            {this._renderFullMovieCard()}
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    );
+  }
+}
 
 App.propTypes = {
   featuredFilm: PropTypes.shape({

@@ -19,7 +19,7 @@ class MoviesList extends PureComponent {
             onMovieCardTitleClick = {onMovieCardTitleClick}
             onMovieCardHover = {(evt) => {
               const hoveredMovieCard = evt.currentTarget;
-              this.setState(() => (hoveredMovieCard));
+              this.setState({hoveredMovieCard});
             }}
           />
         )}

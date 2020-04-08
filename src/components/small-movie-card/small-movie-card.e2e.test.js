@@ -8,7 +8,7 @@ Enzyme.configure({
   adapter: new Adapter()
 });
 
-it(`shhould small movie card title be pressed`, () => {
+it(`should small movie card title be pressed`, () => {
   const onMovieCardHover = jest.fn();
   const film = films[0];
 
